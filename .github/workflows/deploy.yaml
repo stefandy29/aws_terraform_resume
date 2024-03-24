@@ -4,14 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Log level'
+        description: 'Test'
         required: true
-        default: 'warning'
+        default: 'Test'
         type: choice
         options:
-        - info
-        - warning
-        - debug
+        - Test
 
 jobs:
   Terraform_AWS_Resume:
