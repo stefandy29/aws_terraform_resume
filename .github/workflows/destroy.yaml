@@ -6,7 +6,7 @@ on:
       action:
         description: 'Terraform Action to Perform'
         required: 'true'
-        default: 'apply'
+        default: "apply"
         type: choice
         options:
         - apply
