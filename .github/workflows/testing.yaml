@@ -36,7 +36,7 @@ jobs:
 
       - name: Echo Test
         run: |
-          #cat main.tf | grep 'module "*' | tr -d ' {' | sed  's/module"/module./' | tr -d '"'
+          cat main.tf | grep 'module "*' | tr -d ' {' | sed  's/module"/module./' | tr -d '"'
           pwd
           ls
           #TF_VAR_jwtSecret: ${{ secrets.JWT_SECRET }}
