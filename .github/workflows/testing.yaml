@@ -39,6 +39,7 @@ jobs:
         run: |
           cat main.tf | grep 'module "*' | tr -d ' {' | sed  's/module"/module./' | tr -d '"'
           pwd
+          ls -la
 
 
 
