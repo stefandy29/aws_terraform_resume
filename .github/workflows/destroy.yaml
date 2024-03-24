@@ -2,14 +2,9 @@ name: "terraform-destroy"
 
 on:
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Test'
-        required: true
-        default: 'Test'
-        type: choice
-        options:
-        - Test
+  push:
+    branches:
+      - main
 
 jobs:
   Terraform_AWS_Resume:
@@ -27,6 +22,9 @@ jobs:
       #jwtSecret: ${{ secrets.JWT_SECRET }} #github secret
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
