@@ -36,7 +36,9 @@ jobs:
           terraform init
 
       - name: Echo Test
-        run: cat main.tf | grep 'module "*' | tr -d ' {' | sed  's/module"/module./' | tr -d '"'
+        run: |
+          cat main.tf | grep 'module "*' | tr -d ' {' | sed  's/module"/module./' | tr -d '"'
+          pwd
 
 
 
