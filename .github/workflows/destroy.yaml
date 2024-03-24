@@ -3,14 +3,14 @@ name: "terraform-destroy"
 on:
   workflow_dispatch:
     inputs:
-      action:
-        description: 'Terraform Action to Perform'
-        required: 'true'
+      terraform_operation:
+        description: "Terraform operation: apply, destroy"
+        required: true
         default: "apply"
         type: choice
         options:
-        - apply
-        - destroy
+          - apply
+          - destroy
 
 
 jobs:
