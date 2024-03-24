@@ -31,7 +31,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform plan
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
         id: plan
         run: |
           terraform init
