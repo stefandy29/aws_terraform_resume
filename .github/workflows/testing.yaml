@@ -1,0 +1,43 @@
+name: "terraform-destroy"
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Test'
+        required: true
+        default: 'Test'
+        type: choice
+        options:
+        - Test
+
+jobs:
+  Terraform_AWS_Resume:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+      AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_REGION_ACM: ${{ secrets.AWS_REGION_ACM }}
+  
+      CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+      ZONE_ID: ${{ secrets.ZONE_ID }}
+      ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
+
+      #jwtSecret: ${{ secrets.JWT_SECRET }} #github secret
+
+    steps:
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform plan
+        id: plan
+        run: |
+          terraform init
+
+      - name: Echo Test
+        run: cat main.tf | grep 'module "*' | tr -d ' {' | sed  's/module"/module./' | tr -d '"'
+
+
+
+          #TF_VAR_jwtSecret: ${{ secrets.JWT_SECRET }}
