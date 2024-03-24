@@ -39,20 +39,5 @@ jobs:
         run: |
           #cat main.tf | grep 'module "*' | tr -d ' {' | sed  's/module"/module./' | tr -d '"'
           pwd
-          ls -la
-          cd ..
-          pwd
-          ls -la
-          cd ..
-          pwd
-          ls -la
-          cd ..
-          pwd
-          ls -la
-          cd ..
-          pwd
-          ls -la
-          cd ..
-          pwd
-          ls -la
+          ls
           #TF_VAR_jwtSecret: ${{ secrets.JWT_SECRET }}
