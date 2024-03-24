@@ -47,6 +47,14 @@ jobs:
           TF_VAR_zone_id: ${{ secrets.ZONE_ID }}
           TF_VAR_account_id: ${{ secrets.ACCOUNT_ID }}
 
+          TF_VAR_domain: "*.keysersozeresume.uk"
+          TF_VAR_domain_firstname: "stefandi"
+          TF_VAR_s3_folder_location_upload: "resume"
+
+          TF_VAR_tags: "keysersoze"
+          TF_VAR_lambda_function_name: "totalViewer"
+          TF_VAR_api_gateway_stage_name: "views"
+
       - name: Terraform plan
         id: plan
         run: terraform plan
@@ -60,6 +68,14 @@ jobs:
           TF_VAR_cloudflare_token: ${{ secrets.CLOUDFLARE_TOKEN }}
           TF_VAR_zone_id: ${{ secrets.ZONE_ID }}
           TF_VAR_account_id: ${{ secrets.ACCOUNT_ID }}
+
+          TF_VAR_domain: "*.keysersozeresume.uk"
+          TF_VAR_domain_firstname: "stefandi"
+          TF_VAR_s3_folder_location_upload: "resume"
+
+          TF_VAR_tags: "keysersoze"
+          TF_VAR_lambda_function_name: "totalViewer"
+          TF_VAR_api_gateway_stage_name: "views"
 
       - name: Terraform Test
         run: terraform apply -target=module.aws_s3_bucket -auto-approve
