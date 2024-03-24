@@ -36,7 +36,6 @@ jobs:
 
       - name: Echo Test
         run: |
-          cat main.tf | grep 'module "*' | tr -d ' {' | sed  's/module"/module./' | tr -d '"'
-          pwd
-          ls
+          terraform apply -target=module.aws_s3_bucket -auto-approve
+          terraform state list
           #TF_VAR_jwtSecret: ${{ secrets.JWT_SECRET }}
