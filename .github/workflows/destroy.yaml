@@ -1,4 +1,4 @@
-name: "terraform-deploy"
+name: "terraform-destroy"
 
 on:
   workflow_dispatch:
