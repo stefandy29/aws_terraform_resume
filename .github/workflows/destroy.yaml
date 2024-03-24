@@ -14,8 +14,8 @@ on:
 
 
 jobs:
-  Terraform_apply:
-    name: "Terraform_apply"
+  terraform:
+    name: "terraform"
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
