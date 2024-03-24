@@ -98,9 +98,10 @@ jobs:
           TF_VAR_api_gateway_stage_name: "views"
         if: "${{ github.event.inputs.terraform_operation == 'apply' }}"
 
-      - name: Terraform Destroy all
-        run: terraform destroy -auto-approve
-        continue-on-error: true
+      - name: Review 
+        uses: dflook/terraform-plan@v1
+        with:
+          destroy: true
         env:
           TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           TF_VAR_secret_key: ${{ secrets.AWS_SECRET_KEY }}
