@@ -31,6 +31,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Allow execute script
+        run: chmod +x "*.sh"
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
