@@ -56,7 +56,7 @@ variable "cloudflare_token" {
 variable "tags" {
   type      = string
   default   = ""
-  sensitive = true
+  sensitive = false
 }
 
 variable "s3_bucket_name" {

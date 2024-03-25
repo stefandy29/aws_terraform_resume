@@ -34,6 +34,21 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
+      - id: install-aws-cli
+        uses: unfor19/install-aws-cli-action@v1
+        with:
+          version: 2
+          verbose: false
+          arch: amd64
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+
       - name: Terraform Init
         id: init
         run: terraform init
@@ -55,45 +70,51 @@ jobs:
           TF_VAR_lambda_function_name: "totalViewer"
           TF_VAR_api_gateway_stage_name: "views"
 
+      - name: Import latest tfstate
+        run: ./bucketstate.sh load "terraform-backup-keysersoze" #bucket_name
 
-      - name: Terraform apply
-        run: ./moduleruntf.sh apply
-        env:
-          TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-          TF_VAR_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          TF_VAR_region: ${{ secrets.AWS_REGION }}
-          TF_VAR_region_acm: ${{ secrets.AWS_REGION_ACM }}
+      - name: Test
+        run: cat "terraform.tfstate"
 
-          TF_VAR_cloudflare_token: ${{ secrets.CLOUDFLARE_TOKEN }}
-          TF_VAR_zone_id: ${{ secrets.ZONE_ID }}
-          TF_VAR_account_id: ${{ secrets.ACCOUNT_ID }}
 
-          TF_VAR_domain: "*.keysersozeresume.uk"
-          TF_VAR_domain_firstname: "stefandi"
-          TF_VAR_s3_folder_location_upload: "resume"
+      # - name: Terraform apply all resources
+      #   run: ./moduleruntf.sh apply
+      #   env:
+      #     TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+      #     TF_VAR_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+      #     TF_VAR_region: ${{ secrets.AWS_REGION }}
+      #     TF_VAR_region_acm: ${{ secrets.AWS_REGION_ACM }}
 
-          TF_VAR_tags: "keysersoze"
-          TF_VAR_lambda_function_name: "totalViewer"
-          TF_VAR_api_gateway_stage_name: "views"
-        if: "${{ github.event.inputs.terraform_operation == 'apply' }}"
+      #     TF_VAR_cloudflare_token: ${{ secrets.CLOUDFLARE_TOKEN }}
+      #     TF_VAR_zone_id: ${{ secrets.ZONE_ID }}
+      #     TF_VAR_account_id: ${{ secrets.ACCOUNT_ID }}
 
-      - name: Review 
-        run: terraform destroy -auto-approve
-        env:
-          TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-          TF_VAR_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          TF_VAR_region: ${{ secrets.AWS_REGION }}
-          TF_VAR_region_acm: ${{ secrets.AWS_REGION_ACM }}
+      #     TF_VAR_domain: "*.keysersozeresume.uk"
+      #     TF_VAR_domain_firstname: "stefandi"
+      #     TF_VAR_s3_folder_location_upload: "resume"
 
-          TF_VAR_cloudflare_token: ${{ secrets.CLOUDFLARE_TOKEN }}
-          TF_VAR_zone_id: ${{ secrets.ZONE_ID }}
-          TF_VAR_account_id: ${{ secrets.ACCOUNT_ID }}
+      #     TF_VAR_tags: "keysersoze"
+      #     TF_VAR_lambda_function_name: "totalViewer"
+      #     TF_VAR_api_gateway_stage_name: "views"
+      #   if: "${{ github.event.inputs.terraform_operation == 'apply' }}"
 
-          TF_VAR_domain: "*.keysersozeresume.uk"
-          TF_VAR_domain_firstname: "stefandi"
-          TF_VAR_s3_folder_location_upload: "resume"
+      # - name: Review 
+      #   run: terraform destroy -auto-approve
+      #   env:
+      #     TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+      #     TF_VAR_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+      #     TF_VAR_region: ${{ secrets.AWS_REGION }}
+      #     TF_VAR_region_acm: ${{ secrets.AWS_REGION_ACM }}
 
-          TF_VAR_tags: "keysersoze"
-          TF_VAR_lambda_function_name: "totalViewer"
-          TF_VAR_api_gateway_stage_name: "views"
-        if: "${{ github.event.inputs.terraform_operation == 'destroy' }}"
+      #     TF_VAR_cloudflare_token: ${{ secrets.CLOUDFLARE_TOKEN }}
+      #     TF_VAR_zone_id: ${{ secrets.ZONE_ID }}
+      #     TF_VAR_account_id: ${{ secrets.ACCOUNT_ID }}
+
+      #     TF_VAR_domain: "*.keysersozeresume.uk"
+      #     TF_VAR_domain_firstname: "stefandi"
+      #     TF_VAR_s3_folder_location_upload: "resume"
+
+      #     TF_VAR_tags: "keysersoze"
+      #     TF_VAR_lambda_function_name: "totalViewer"
+      #     TF_VAR_api_gateway_stage_name: "views"
+      #   if: "${{ github.event.inputs.terraform_operation == 'destroy' }}"
