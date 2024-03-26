@@ -5,6 +5,11 @@ terraform {
       version = "~> 5.0"
     }
   }
+  backend "s3" {
+    bucket = "terraform-backup-keysersoze"
+    key    = "state/terraform.tfstate"
+    region = "ap-southeast-3"
+  }
 }
 
 provider "aws" {
@@ -12,4 +17,3 @@ provider "aws" {
   secret_key = var.secret_key
   region     = var.region
 }
-
