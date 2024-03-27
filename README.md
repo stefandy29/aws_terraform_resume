@@ -32,3 +32,47 @@ lambda_function_name   = function name
 api_gateway_stage_name = urlname
 ```
 
+### 2. Run using shell script
+
+```
+Terraform init
+./moduleruntf.sh apply ###run the module sequencially
+
+```
+
+### 3. (Optional) Destroy all resource
+
+```
+Terraform init
+Terraform destroy -auto-approve
+```
+
+
+## F.A.Q
+
+### 1. Why using shell script instead of terraform apply?
+
+##### The reason why you need shell script to run because you need to run the modules sequencially and separated
+
+##### Here's the flow witnout using shell script
+```
+terraform apply -target=module.aws_dynamodb -auto-approve
+terraform apply -target=module.local_file_python -auto-approve
+terraform apply -target=module.aws_iam -auto-approve
+terraform apply -target=module.aws_lambda -auto-approve
+terraform apply -target=module.aws_api_gateway -auto-approve
+terraform apply -target=module.aws_lambda_api_gateway_permission -auto-approve
+terraform apply -target=module.aws_api_gateway_deploy -auto-approve
+terraform apply -target=module.local_file_javascript -auto-approve
+terraform apply -target=module.aws_s3_bucket -auto-approve
+terraform apply -target=module.aws_acm -auto-approve
+terraform apply -target=module.cloudflare_record_hidden -auto-approve
+terraform apply -target=module.aws_cloudfront -auto-approve
+terraform apply -target=module.cloudflare_record_real -auto-approve
+terraform apply -target=module.aws_s3_policy -auto-approve
+```
+
+
+### 2. Why using Cloudfare instead of Route 53?
+
+##### My account somehow couldn't buy domain from Route 53, and buying domain from Cloudflare is cheaper.
