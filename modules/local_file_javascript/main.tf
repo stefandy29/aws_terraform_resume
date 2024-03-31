@@ -17,7 +17,7 @@ async function getView() {
   let response = await fetch(lambda_url,
   {
     headers: {
-      "Access-Control-Allow-Origin": "*", 
+      "Access-Control-Allow-Origin": "${var.api_gateway_allow_access_control_origin}", 
       "Access-Control-Allow-Headers" : "*",
       "Access-Control-Allow-Credentials": true,
       "Access-Control-Allow-Methods": "POST, PUT, PATCH, GET, DELETE, OPTIONS",

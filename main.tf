@@ -52,6 +52,7 @@ module "local_file_javascript" {
   source                    = "./modules/local_file_javascript"
   s3_folder_location_upload = var.s3_folder_location_upload
   api_gateway_url           = "${module.aws_api_gateway_deploy.api_gateway_deploy_invoke_url}${var.api_gateway_stage_name}/${var.lambda_function_name}"
+  api_gateway_allow_access_control_origin = "https://${replace(var.domain, "*", var.domain_firstname)}"
 }
 
 module "aws_s3_bucket" {
