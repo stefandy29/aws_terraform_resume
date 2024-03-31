@@ -83,6 +83,7 @@ jobs:
       - name: Terraform update resources
         run: |
           terraform apply -target=module.local_file_python -auto-approve
+          terraform apply -target=module.local_file_javascript -auto-approve
           terraform apply -auto-approve
         env:
           TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY }}
