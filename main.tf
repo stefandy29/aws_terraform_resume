@@ -12,7 +12,7 @@ module "local_file_python" {
   dynamodb_name        = "dynamodb-${var.tags}"
   dynamodb_hashkey     = "id"
   dynamodb_item_key    = var.api_gateway_stage_name
-  api_gateway_allow_access_control_origin = "https://${replace(var.domain, "*", var.domain_firstname)}"
+  api_gateway_allow_access_control_origin = "*"
 }
 
 module "aws_iam" {
@@ -25,14 +25,14 @@ module "aws_lambda" {
   source               = "./modules/aws_lambda"
   lambda_function_name = var.lambda_function_name
   iam_role_arn         = module.aws_iam.iam_role_arn
-  api_gateway_allow_access_control_origin = "https://${replace(var.domain, "*", var.domain_firstname)}"
+  api_gateway_allow_access_control_origin = "*"
 }
 
 module "aws_api_gateway" {
   source                                  = "./modules/aws_api_gateway"
   api_gateway_name                        = var.lambda_function_name
   lambda_function_invoke_arn              = module.aws_lambda.lambda_function_invoke_arn
-  api_gateway_allow_access_control_origin = "https://${replace(var.domain, "*", var.domain_firstname)}"
+  api_gateway_allow_access_control_origin = "*"
 }
 
 module "aws_lambda_api_gateway_permission" {
@@ -52,7 +52,7 @@ module "local_file_javascript" {
   source                    = "./modules/local_file_javascript"
   s3_folder_location_upload = var.s3_folder_location_upload
   api_gateway_url           = "${module.aws_api_gateway_deploy.api_gateway_deploy_invoke_url}${var.api_gateway_stage_name}/${var.lambda_function_name}"
-  api_gateway_allow_access_control_origin = "https://${replace(var.domain, "*", var.domain_firstname)}"
+  api_gateway_allow_access_control_origin = "*"
 }
 
 module "aws_s3_bucket" {
