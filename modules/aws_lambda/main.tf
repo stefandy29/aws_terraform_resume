@@ -20,7 +20,7 @@ resource "aws_lambda_function_url" "keysersoze_lambda_totalViewer_url" {
   cors {
     allow_credentials = true
     allow_origins     = ["*"]
-    allow_methods     = ["*"]
+    allow_methods     = [var.api_gateway_allow_access_control_origin]
     allow_headers     = ["date", "keep-alive"]
     expose_headers    = ["keep-alive", "date"]
     max_age           = 86400
