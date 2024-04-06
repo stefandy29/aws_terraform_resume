@@ -128,11 +128,14 @@ button {
   border-bottom-right-radius: 0px;
   border-color: rgba(105, 105, 105, 0.24);
   background-color: rgb(185, 185, 185); 
-  
+}
+
+.navbar button{
+  text-decoration: underline;
 }
 
 .navbar button:hover{
-  color:gray;
+  color:red;
 }
 
 .navbar-list {
