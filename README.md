@@ -3,8 +3,8 @@
 ## https://stefandi.keysersozeresume.uk
 
 ![image](diagram/test.png)
-### generated diagram using mingrammer
-### https://github.com/mingrammer/diagrams
+###### generated diagram using mingrammer
+###### https://github.com/mingrammer/diagrams
 
 
 ### How to use on your local computer
