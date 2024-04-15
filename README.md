@@ -54,7 +54,7 @@ Terraform destroy -auto-approve
 
 ##### The reason why you need shell script to run because you need to run the modules sequencially and separated
 
-##### Here's the flow witnout using shell script
+##### Here's the flow without using shell script
 ```
 terraform apply -target=module.aws_dynamodb -auto-approve
 terraform apply -target=module.local_file_python -auto-approve
@@ -73,6 +73,6 @@ terraform apply -target=module.aws_s3_policy -auto-approve
 ```
 
 
-### 2. Why using Cloudfare instead of Route 53?
+### 2. Why using Cloudflare instead of Route 53?
 
-##### My account somehow couldn't buy domain from Route 53, and buying domain from Cloudflare is cheaper.
+##### Cloudflare is cheaper.
