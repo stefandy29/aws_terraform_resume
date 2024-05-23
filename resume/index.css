@@ -6,16 +6,303 @@
     font-family: 'Calibri';
 }
 
-
-:root {
-  --size_contain: 630px;
-}
-
 a { text-decoration: none; }
 
+.timeline-title a:link { 
+  text-decoration: none; 
+  color: black;
+  font-weight: normal;
+} 
+
+.timeline-title a:visited { 
+  text-decoration: none; 
+  color: black;
+} 
+
+.timeline-title a:hover { 
+  text-decoration: none; 
+  color: black;
+  font-weight: bolder;
+} 
+.timeline-title a:active { 
+  text-decoration: none; 
+  color: black;
+}
 li { list-style: none; }
 
 body { background-color: rgba(0, 0, 0, 0.466); }
+
+
+
+
+@media (min-width:480px){
+.resume section {
+  display: block;
+}
+  /* button {
+    font: inherit;
+    background: red;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+  } */
+  .resume {
+    margin: 60px;
+  }
+  .timeline-li{
+    list-style:disc;
+  }
+
+  .sidenav {
+      height: 100%;
+      width: 100%;
+
+
+      /* background-color: red; */
+      position: relative;
+      
+    }
+  
+  
+.sidenav-contain{
+    /* background-color: rgba(77, 77, 77, 0.288); */
+    /* margin-top: 150px;
+    margin-bottom: 150px;
+    margin-left: 300px;
+    margin-right: 50px; */
+    padding: 20px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 11px;
+    border-color: rgba(0, 0, 0, 0.322);
+    margin: auto;
+  }
+  
+  .sidenav img {
+    padding: 10px;
+    /* display: flex;
+    justify-content: center;   */
+    width: 500px;
+    height: 100%;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+  }
+  
+  .sidenav .name{
+    text-align: center;
+    font-size: 150px;
+    /* padding: 10px;
+    margin: 15px;
+   */
+  }
+  
+  .sidenav .title_job{
+    text-align: center;
+    font-size: 80px;
+    margin: 20px;
+  } 
+  
+  .title_job{
+    border-bottom: 5px solid;
+  }
+  
+ /* .sidenav svg{
+    width: 17px;
+    height: 17px;
+  } */
+
+  .contact-detail{
+    color: black;
+    margin-left: 25px;
+    padding: 1px;
+    border-style: hidden;
+
+  }
+  
+  .contact-item{
+    padding: 5px;
+    padding-top: 12px;
+  }
+  
+  
+ .contact-item a{
+    margin-left: 15px;
+    font-size: 60px;
+  }
+  
+
+  .navbar {
+    /* position: absolute; */
+  
+    right: 301px;
+    top: 151px;
+  
+    padding-left: 10px;
+    padding-right: 40px;
+    box-shadow: none;
+    font-size: 20px;
+    font-weight: bold;
+    color:rgb(131, 131, 131);  
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-right: 5px;
+    border-top: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-color: rgba(105, 105, 105, 0.24);
+    /* background-color: rgb(185, 185, 185);  */
+  } 
+  
+/* .navbar button{
+    text-decoration: underline;
+  }
+  
+  .navbar button:hover{
+    color:red;
+  }
+  
+  .navbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  .navbar-link {
+    margin-left: 25px;
+    padding: 15px;
+    padding-bottom: 5px;
+  } */
+/* 
+  .resume {
+    margin-left: var(--size_contain);
+    margin-right: 300px;
+    margin-top: 150px;
+    padding: 50px;
+    background-color: green;
+    border-radius: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.568);
+} */
+.navbar {
+  display: none;
+}
+
+
+/* .timeline a{
+  display: block;
+  background-color: rebeccapurple;
+} */
+
+
+.resume_title {
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+  /* margin-top: -50px;
+  margin-left: -25px; */
+  font-size: 40px;
+  /* background-color: green; */
+  text-align: center;
+}
+
+
+.title-wrapper{
+  border-bottom: 3px solid rgb(0, 0, 0);
+
+  padding-top: 20px;
+}
+
+
+
+
+.title-wrapper h3 a svg{
+  font-size: 100px;
+}
+
+.contact-item svg{
+  display: none;
+}
+
+.resume h3 a{
+  font-size: 35px;
+  margin-left: 0;
+}
+
+.resume h3 svg{
+  display: none;
+}
+
+.resume a{
+  font-size: 125px;
+  margin-left: 25px;
+}
+
+.timeline-title li a{
+  font-size: 30px;
+  margin-left: 0;
+}
+
+.timeline h4{
+  border-top: 1px;
+}
+
+/* .timeline-list{
+  margin: 25px;
+  font-size: 25px;
+} */
+
+/* .timeline-item{
+  margin-bottom: 10px;
+} */
+/* 
+.timeline-title{
+  margin-left: -25px;
+} */
+/* 
+.timeline-list span{
+  font-size: 18px;
+  font-style: oblique;
+} */
+
+/* .timeline-list p{
+  font-size: 20px;
+} */
+
+/* .timeline-list a{
+  margin-left: 0px;
+  font-size: 20px;
+} */
+
+/* .timeline-li{
+  list-style:lower-latin;
+  font-size: 20px;
+  margin-left: 20px;
+} */
+}
+
+
+
+
+
+
+
+
+@media (min-width: 1600px){
+  section[id$='resume_section'] {
+    display: none;
+  }
+  svg{
+    display: block;
+  }
+:root {
+  --size_contain: 630px;
+}
 
 button {
   font: inherit;
@@ -98,8 +385,21 @@ button {
 
 
 .contact-item a{
-  margin-left: 15px;
+  margin-left: 20px; 
   font-size: 17px;
+}
+
+
+.contact-item svg{
+  display: block;
+  margin-left: -15px;
+  margin-bottom: -17px;
+}
+
+
+
+.resume h3 svg{
+  display: block;
 }
 
 .hidden {
@@ -108,6 +408,7 @@ button {
 
 
 .navbar {
+  display: block;
   position: absolute;
 
   right: 301px;
@@ -128,9 +429,9 @@ button {
   border-bottom-right-radius: 0px;
   border-color: rgba(105, 105, 105, 0.24);
   background-color: rgb(185, 185, 185); 
-}
+} 
 
-.navbar button{
+ .navbar button{
   text-decoration: underline;
 }
 
@@ -152,7 +453,7 @@ button {
   padding-bottom: 5px;
 }
 
-/* Style the content */
+
 .resume {
     margin-left: var(--size_contain);
     margin-right: 300px;
@@ -170,6 +471,8 @@ button {
   margin-top: -50px;
   margin-left: -25px;
   font-size: 40px;
+  text-align: left;
+  
 }
 
 
@@ -177,11 +480,22 @@ button {
   border-bottom: 3px solid rgb(0, 0, 0);
 }
 
+.title-wrapper h3{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.title-wrapper h3 a{
+  font-size: 25px;
+  margin-left: 25px;
+}
 
 .resume svg{
   width: 24px;
   height: 24px;
 }
+
+
 
 .resume a{
   font-size: 25px;
@@ -199,6 +513,10 @@ button {
 
 .timeline-title{
   margin-left: -25px;
+}
+
+.timeline-title li a{
+  font-size: 25px;
 }
 
 .timeline-list span{
@@ -227,4 +545,5 @@ button {
 }
 .timeline-title li{
   list-style: inside;
+} 
 }
