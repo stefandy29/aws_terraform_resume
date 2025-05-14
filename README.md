@@ -71,8 +71,3 @@ terraform apply -target=module.aws_cloudfront -auto-approve
 terraform apply -target=module.cloudflare_record_real -auto-approve
 terraform apply -target=module.aws_s3_policy -auto-approve
 ```
-
-
-### 2. Why using Cloudflare instead of Route 53?
-
-##### Cloudflare is cheaper.
